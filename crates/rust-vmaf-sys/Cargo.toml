@@ -13,3 +13,6 @@ workspace = true
 
 [build-dependencies]
 bindgen = { version = "0.69.4" }
+
+[features]
+static-link = []

@@ -95,5 +95,12 @@ fn main() {
         "cargo:rustc-link-search=native={}/libvmaf/build/src/",
         vmaf_path.to_string_lossy()
     );
-    println!("cargo:rustc-link-lib=vmaf");
+    if std::env::var("CARGO_FEATURE_STATIC_LINK").is_ok() {
+        println!("cargo:rustc-link-lib=static=vmaf");
+        println!("cargo:rustc-link-lib=m");
+        println!("cargo:rustc-link-lib=pthread");
+        println!("cargo:rustc-link-lib=stdc++");
+    } else {
+        println!("cargo:rustc-link-lib=vmaf");
+    }
 }
