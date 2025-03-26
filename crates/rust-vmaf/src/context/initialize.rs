@@ -4,7 +4,6 @@ use rust_vmaf_sys::{
     vmaf_init,
     vmaf_use_features_from_model,
     VmafConfiguration,
-    VmafLogLevel_VMAF_LOG_LEVEL_NONE,
 };
 
 use super::{context::VmafContextPtr, ContextConfig, Process, VmafContext};
@@ -28,7 +27,7 @@ impl VmafContext<Initialize> {
             vmaf_init(
                 &mut this.context_ptr.0,
                 VmafConfiguration {
-                    log_level: VmafLogLevel_VMAF_LOG_LEVEL_NONE,
+                    log_level: config.log_level.into(),
                     n_threads: config.threads.unwrap_or(
                         std::thread::available_parallelism()
                             .unwrap_or(UNSIZED_ONE)
