@@ -52,6 +52,9 @@ impl Drop for VmafModel {
     }
 }
 
+unsafe impl Send for VmafModel {}
+unsafe impl Sync for VmafModel {}
+
 #[cfg(test)]
 mod tests {
     use super::*;

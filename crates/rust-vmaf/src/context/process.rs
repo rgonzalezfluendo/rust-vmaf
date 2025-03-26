@@ -111,3 +111,6 @@ impl VmafContext<Process> {
         })
     }
 }
+
+unsafe impl Send for VmafContext<Process> {}
+unsafe impl Sync for VmafContext<Process> {}
